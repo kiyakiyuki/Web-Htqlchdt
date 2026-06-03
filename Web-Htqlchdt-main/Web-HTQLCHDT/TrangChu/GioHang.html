@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTK - Giỏ Hàng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="GioHang.css">
+</head>
+<body>
+ 
+<div class="header">
+  <a href="TrangChu.html" class="logo-box">
+    <img src="images/Rectangle_2.png" alt="">
+  </a>
+  <div class="search-wrap">
+    <input type="text" placeholder="Tìm kiếm">
+    <button onclick="window.location.href='TimKiem.html'"><i class="fas fa-search"></i></button>
+  </div>
+  <div class="header-icons">
+    <a href="GioHang.html" class="header-icon-item cart-link">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-badge" id="header-cart-badge">2</span>
+      <span>Giỏ hàng</span>
+    </a>
+    <a href="login.html" class="header-icon-item">
+      <i class="fas fa-user"></i>
+      <span>Tài khoản</span>
+    </a>
+    <div class="header-icon-item">
+      <i class="fas fa-bars"></i>
+      <span>Menu</span>
+    </div>
+  </div>
+</div>
+ 
+<div class="main-wrap">
+ 
+  <div class="table-header">
+    <span>Sản phẩm</span>
+    <span>Đơn giá</span>
+    <span>Số lượng</span>
+    <span>Số tiền</span>
+  </div>
+ 
+  <div class="cart-item">
+    <div class="cart-checkbox"><i class="fas fa-check"></i></div>
+    
+    <div class="item-left">
+      <div class="item-img">
+        <img src="images/iphone.png" alt="">
+      </div>
+      <div class="item-name">iPhone 14 Pro Max 256GB</div>
+    </div>
+
+    <div class="item-price">14.550.000đ</div>
+
+    <div class="qty-column">
+      <span class="qty-label">Số Lượng</span>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+        <div class="qty-num">1</div>
+        <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+
+    <div class="action-column">
+      <button class="btn-cancel" onclick="cancelItem(this)">Hủy</button>
+    </div>
+  </div>
+ 
+  <div class="cart-item">
+    <div class="cart-checkbox"><i class="fas fa-check"></i></div>
+    
+    <div class="item-left">
+      <div class="item-img">
+       <img src="images/laptop.png" alt="">
+      </div>
+      <div class="item-name">Laptop V14 Pro</div>
+    </div>
+
+    <div class="item-price">24.550.000đ</div>
+
+    <div class="qty-column">
+      <span class="qty-label">Số Lượng</span>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+        <div class="qty-num">1</div>
+        <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+      </div>
+    </div>
+
+    <div class="action-column">
+      <button class="btn-cancel" onclick="cancelItem(this)">Hủy</button>
+    </div>
+  </div>
+ 
+  <a href="TimKiem.html" class="btn-xemthem text-decoration-none">Xem thêm</a>
+ 
+  <div class="bottom-bar">
+    <button class="btn-select-all" id="selectAllBtn">Chọn tất cả</button>
+    <button class="btn-huy-red" onclick="cancelAll()">Hủy</button>
+    <button class="btn-order-total">Tổng Tiền (<span id="total-count">0</span>) sản phẩm</button>
+    <span class="total-value" id="total-price">0đ</span>
+  </div>
+
+<div class="cart-buttons-group" style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 20px auto 40px; width: fit-content;">
+  
+  <button onclick="proceedToCheckout()" class="btn-dathang" style="background: #D7EFFF; border: 2px solid #000; padding: 12px 30px; border-radius: 30px; font-weight: 700; color: #000; cursor: pointer; font-size: 15px; width: 260px; text-align: center;">
+    Đặt Hàng
+  </button>
+
+  <a href="Theodoidonhang.html" class="btn-action-link" style="background: #D7EFFF; border: 2px solid #000; padding: 12px 35px; border-radius: 50px; font-weight: 700; text-decoration: none; color: #000; display: inline-block; font-size: 15px; width: 340px; text-align: center;">
+    Theo dõi đơn hàng đã đặt
+  </a>
+
+</div>
+  
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h6>GIỚI THIỆU</h6>
+      <a href="#">Giới thiệu về PetPicks</a>
+      <a href="#">Hệ thống cửa hàng</a>
+      <a href="#">Tuyển dụng</a>
+      <a href="#">Liên hệ, tuyển dụng</a>
+    </div>
+    <div class="footer-col">
+      <h6>CHÍNH SÁCH</h6>
+      <a href="#">Điều khoản & dịch vụ</a>
+      <a href="#">Chính sách bảo mật</a>
+      <a href="#">Quy định bảo hành</a>
+      <a href="#">Hình thức thanh toán</a>
+    </div>
+    <div class="footer-col">
+      <h6>TÀI KHOẢN</h6>
+      <a href="#">Thay đổi thông tin</a>
+      <a href="#">Lấy lại mật khẩu</a>
+      <a href="#">Lịch sử mua hàng</a>
+      <a href="#">Quản lý giỏ hàng</a>
+    </div>
+    <div class="footer-col">
+      <h6>HỖ TRỢ</h6>
+      <a href="#">Hướng dẫn mua hàng</a>
+      <a href="#">Khuyến mãi</a>
+      <a href="#">Giao nhận hàng hóa</a>
+      <a href="#">Khiếu nại bồi thường</a>
+    </div>
+       <div class="footer-logo-box mt-3">
+    <img src="images/Rectangle_2.png" alt="">
+  </div>
+  </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // 1. Logic Tăng / Giảm số lượng (+ / -) -> Min là 0
+  function changeQty(btn, delta) {
+    const qtyNumDiv = btn.parentElement.querySelector('.qty-num');
+    let currentQty = parseInt(qtyNumDiv.textContent) + delta;
+    
+    if (currentQty < 0) currentQty = 0;
+    
+    qtyNumDiv.textContent = currentQty;
+    updateTotal();
+  }
+
+  // 2. Click nút Hủy của hàng nào -> hàng đó auto đưa số lượng về 0
+  function cancelItem(btn) {
+    const cartItem = btn.closest('.cart-item');
+    const qtyNumDiv = cartItem.querySelector('.qty-num');
+    
+    qtyNumDiv.textContent = 0;
+    updateTotal();
+  }
+
+  // 3. Click nút Hủy đỏ ở thanh Bottom Bar -> Toàn bộ sản phẩm về số lượng 0
+  function cancelAll() {
+    document.querySelectorAll('.qty-num').forEach(div => {
+      div.textContent = 0;
+    });
+    updateTotal();
+  }
+
+  // 4. Logic Chọn Tất Cả -> Hiện dấu tích + Đổi nền màu xanh đậm hơn
+  const selectAllBtn = document.getElementById('selectAllBtn');
+  let isSelectedAll = false;
+
+  selectAllBtn.addEventListener('click', function() {
+    isSelectedAll = !isSelectedAll;
+    const allItems = document.querySelectorAll('.cart-item');
+    
+    allItems.forEach(item => {
+      if (isSelectedAll) {
+        item.classList.add('selected');
+      } else {
+        item.classList.remove('selected');
+      }
+    });
+    
+    updateTotal();
+  });
+
+  // Tích chọn độc lập hoặc hủy chọn trực tiếp bằng cách click vào ô vuông checkbox
+  document.querySelectorAll('.cart-item').forEach(item => {
+    const checkbox = item.querySelector('.cart-checkbox');
+    checkbox.addEventListener('click', (e) => {
+      e.stopPropagation(); // Tránh lỗi click chồng chéo
+      item.classList.toggle('selected');
+      updateTotal();
+    });
+  });
+
+  // 5. Tính toán tổng số tiền và số lượng thực tế
+  function updateTotal() {
+    let totalCount = 0;
+    let totalPrice = 0;
+    
+    document.querySelectorAll('.cart-item').forEach(item => {
+      if (item.classList.contains('selected')) {
+        const qty = parseInt(item.querySelector('.qty-num').textContent);
+        const priceText = item.querySelector('.item-price').textContent;
+        const price = parseInt(priceText.replace(/\./g, '').replace('đ', ''));
+        
+        totalCount += qty;
+        totalPrice += (price * qty);
+      }
+    });
+    
+    // Đồng bộ thông tin xuống Bottom bar và Badge trên Header
+    document.getElementById('total-count').textContent = totalCount;
+    document.getElementById('total-price').textContent = totalPrice.toLocaleString('vi-VN') + 'đ';
+    document.getElementById('header-cart-badge').textContent = totalCount;
+  }
+
+  // Chạy cập nhật lần đầu tiên khi tải trang
+  updateTotal();
+  function proceedToCheckout() {
+  const selectedItems = [];
+  
+  // Lặp qua tất cả các item trong giỏ hàng
+  document.querySelectorAll('.cart-item').forEach(item => {
+    // Nếu item được tích chọn và số lượng lớn hơn 0
+    if (item.classList.contains('selected')) {
+      const name = item.querySelector('.item-name').textContent;
+      const qty = parseInt(item.querySelector('.qty-num').textContent);
+      const priceText = item.querySelector('.item-price').textContent;
+      const price = parseInt(priceText.replace(/\./g, '').replace('đ', ''));
+      
+      // LẤY CHÍNH XÁC ĐƯỜNG DẪN ẢNH ĐỘNG CỦA TỪNG KHỐI SẢN PHẨM
+      const imgElement = item.querySelector('.item-img img');
+      const image = imgElement ? imgElement.getAttribute('src') : 'images/iphone.png';
+      
+      if (qty > 0) {
+        selectedItems.push({
+          name: name,
+          qty: qty,
+          price: price,
+          image: image // Thêm thuộc tính này để truyền ảnh động đi
+        });
+      }
+    }
+  });
+
+  if (selectedItems.length === 0) {
+    alert('Vui lòng chọn ít nhất 1 sản phẩm với số lượng lớn hơn 0 để thanh toán!');
+    return;
+  }
+
+  // Lưu mảng sản phẩm đã chọn vào localStorage kèm đầy đủ ảnh
+  localStorage.setItem('checkoutCart', JSON.stringify(selectedItems));
+  
+  // Chuyển hướng sang trang thanh toán
+  window.location.href = 'ThanhToan.html'; 
+}
+</script>
+</body>
+</html>

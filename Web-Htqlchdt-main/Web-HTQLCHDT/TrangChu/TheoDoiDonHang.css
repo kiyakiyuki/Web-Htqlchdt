@@ -1,0 +1,345 @@
+/* ==========================================================================
+   CONFIG & VARIABLES
+   ========================================================================== */
+:root { 
+  --blue-light: #D7EFFF; 
+  --blue-bg: #EBF5FF;      /* Màu nền dịu làm nổi bật khối nội dung */
+  --red: #EF2525; 
+  --border-radius: 12px; 
+  --stroke-black: #000000;
+}
+
+* { 
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+}
+
+body { 
+  background: #fff; 
+  font-family: 'Segoe UI', sans-serif; 
+  font-size: 14px; 
+  color: #000;
+}
+
+/* ==========================================================================
+   HEADER SECTION
+   ========================================================================== */
+    .header {
+  background: #D7EFFF;
+  height: 190px;            
+  padding: 0 50px;         
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #c4e2f8;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+}
+    .logo-box {
+    margin-top: 20px;
+  width: 150px; 
+  height: 175px;
+  border-radius: 0px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  color: #aaa; 
+  font-size: 10px; 
+  text-align: center;
+  flex-shrink: 0;
+  overflow: hidden;       
+}
+    .search-wrap {
+      height: 80px;
+      margin-left: 200px;
+      flex: 1;
+      display: flex;
+      border: 3px solid #002A94;
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 600px;
+    }
+    .search-wrap input {
+      flex: 1; border: none; outline: none;
+      padding: 8px 16px; font-size: 14px;
+    }
+    .search-wrap button {
+      background: #fff; border: none;
+      padding: 0 16px; cursor: pointer; color: #333;
+    }
+    .header-icons {
+      display: flex; gap: 40px; align-items: center; margin-left: auto;
+    }
+    .header-icon-item {
+      text-align: center; cursor: pointer; text-decoration: none; color: #333;
+    }
+    .header-icon-item i { font-size: 40px; display: block; }
+    .header-icon-item span { font-size: 11px; }
+    .cart-link { position: relative; }
+    .cart-badge {
+      position: absolute; top: -6px; right: -6px;
+      background: var(--red); color: #fff;
+      border-radius: 50%; width: 16px; height: 16px;
+      font-size: 10px; display: flex; align-items: center; justify-content: center;
+    }
+ 
+    .carousel-indicators [data-bs-target] {
+    background-color: #ffb6c1 !important; 
+    opacity: 0.6;                        
+    border: none;                       
+}
+/* ==========================================================================
+   STATUS NAVIGATION TABS (THANH TRẠNG THÁI)
+   ========================================================================== */
+.status-tabs-wrap {
+  background: #fff;
+  padding: 20px 50px 10px;
+}
+
+.status-tabs {
+  display: flex;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tab-item {
+  background: var(--blue-light);
+  border: 2px solid var(--stroke-black);
+  border-radius: 8px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #000;
+  transition: all 0.1s ease;
+}
+
+.tab-item.active,
+.tab-item:hover {
+  background: #fff;
+}
+
+/* ==========================================================================
+   MAIN CONTENT LAYOUT (KHÔNG ĐỔ BÓNG - CHỈ BO VIỀN ĐEN SẮC NÉT)
+   ========================================================================== */
+.main-wrap { 
+  padding: 30px 50px; 
+  background: var(--blue-bg); 
+  min-height: calc(100vh - 190px - 250px); 
+}
+
+.order-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Khối bao bọc một đơn hàng */
+.order-card {
+  background: #fff;
+  border: 2px solid var(--stroke-black);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.order-body {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+/* Ảnh sản phẩm */
+.item-img-box {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.item-img-box img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+/* Cột thông tin ở giữa */
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Hàng tiêu đề nhãn (Tên sản phẩm | Giá cả | Thành tiền) */
+.info-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr;
+  gap: 10px;
+}
+
+.info-label {
+  background: #fff;
+  border: 2px solid var(--stroke-black);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  width: fit-content;
+  text-align: center;
+}
+
+/* Hàng hiển thị giá trị thực tế */
+.info-values {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.item-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+}
+
+.item-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.item-total {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.discount-note {
+  font-size: 11px;
+  color: #555;
+  font-weight: normal;
+  display: block;
+}
+
+.item-rating {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  margin-top: 5px;
+}
+
+/* Nhóm nút hành động bên phải */
+.order-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 180px;
+  align-items: stretch;
+}
+
+/* Các nhãn trạng thái đơn hàng phía trên nút */
+.status-badge {
+  border: 2px solid var(--stroke-black);
+  border-radius: 8px;
+  padding: 6px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.status-waiting {
+  background: #fff;
+  color: #000;
+}
+
+.status-success {
+  background: #fff;
+  color: #000;
+}
+
+/* Các loại nút bấm bên phải */
+.btn-action {
+  border: 2px solid var(--stroke-black);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.1s ease;
+}
+
+.btn-primary { background: #fff; color: #000; }
+.btn-primary:hover { background: var(--blue-light); }
+
+.btn-secondary { background: #fff; color: #000; }
+.btn-secondary:hover { background: #eee; }
+
+.btn-danger { background: var(--red); color: #fff; }
+.btn-danger:hover { opacity: 0.9; }
+
+.btn-outline { background: var(--blue-light); color: #000; }
+
+/* Nút Xem thêm to dài ở dưới */
+.btn-load-more {
+  display: block;
+  width: 100%;
+  background: var(--blue-light);
+  border: 2px solid var(--stroke-black);
+  border-radius: 30px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-load-more:hover {
+  background: #fff;
+}
+
+
+footer {
+      background: var(--blue-light);
+      padding: 30px 20px 20px 50px;
+    }
+    .footer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .footer-col h6 { font-weight: 700; font-size: 30px; margin-bottom: 10px; color: #222; }
+    .footer-col a {
+      display: block; color: #444; font-size: 20px;
+      text-decoration: none; margin-bottom: 4px;
+    }
+    .footer-col a:hover { color: var(--red); }
+    .footer-logo-box {
+      margin-bottom: 10px;
+  width: 200px; 
+  height: 200px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  overflow: hidden;       
+  margin-left: auto;      
+}
+
+.footer-logo-box img {
+  
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-logo-box { margin-left: 0; }
+}

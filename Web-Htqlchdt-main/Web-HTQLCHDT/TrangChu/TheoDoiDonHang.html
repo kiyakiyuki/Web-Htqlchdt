@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theo Dõi Đơn Hàng</title>
+  <link rel="stylesheet" href="TheoDoiDonHang.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo-box">
+ <a href="TrangChu.html" class="logo-box">
+    <img src="images/Rectangle_2.png" alt="">
+  </a>
+    </div>
+    
+    <div class="search-wrap">
+      <input type="text" placeholder="Tìm kiếm đơn hàng của bạn...">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="header-icons">
+      <a href="GioHang.html" class="header-icon-item cart-link">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Giỏ hàng</span>
+        <span class="cart-badge">2</span>
+      </a>
+      <a href="#" class="header-icon-item">
+        <i class="fas fa-user"></i>
+        <span>Tài khoản</span>
+      </a>
+      <a href="#" class="header-icon-item">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="status-tabs-wrap">
+    <div class="status-tabs">
+      <button class="tab-item active">Tất cả</button>
+      <button class="tab-item">Chờ xác nhận</button>
+      <button class="tab-item">Chờ lấy hàng</button>
+      <button class="tab-item">Đang giao</button>
+      <button class="tab-item">Đã giao</button>
+      <button class="tab-item">Đã hủy</button>
+    </div>
+  </div>
+
+  <main class="main-wrap">
+    <div class="order-container" id="orderListContainer">
+    
+      <p style="text-align: center; font-weight: 600; padding: 20px;" id="emptyMessage">Chưa có đơn hàng nào được đặt.</p>
+
+      <a href="TimKiem.html" class="btn-load-more" id="staticLoadMoreBtn">Xem thêm</a>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h6>GIỚI THIỆU</h6>
+        <a href="#">Giới thiệu về PTK</a>
+        <a href="#">Hệ thống cửa hàng</a>
+        <a href="#">Tuyển dụng</a>
+        <a href="#">Liên hệ, tuyển dụng</a>
+      </div>
+      <div class="footer-col">
+        <h6>CHÍNH SÁCH</h6>
+        <a href="#">Điều khoản & dịch vụ</a>
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Quy định bảo hành</a>
+        <a href="#">Hình thức thanh toán</a>
+      </div>
+      <div class="footer-col">
+        <h6>TÀI KHOẢN</h6>
+        <a href="#">Thay đổi thông tin</a>
+        <a href="#">Lấy lại mật khẩu</a>
+        <a href="#">Lịch sử mua hàng</a>
+        <a href="#">Quản lý giỏ hàng</a>
+      </div>
+      <div class="footer-col">
+        <h6>HỖ TRỢ</h6>
+        <a href="#">Hướng dẫn mua hàng</a>
+        <a href="#">Khuyến mãi</a>
+        <a href="#">Giao nhận hàng hóa</a>
+        <a href="#">Khiếu nại bồi thường</a>
+      </div>
+      <div class="footer-logo-box">
+        <img src="images/Rectangle_2.png" alt="">
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // 1. Gắn sự kiện lắng nghe cho toàn bộ vùng chứa đơn hàng (Event Delegation)
+// Giả sử vùng chứa lớn nhất của danh sách đơn hàng là dòng div có id hoặc class chứa các order-card.
+document.addEventListener("DOMContentLoaded", function () {
+  
+  // ==========================================
+  // BƯỚC 1: ĐỌC DỮ LIỆU TỪ LOCALSTORAGE & HIỂN THỊ
+  // ==========================================
+  const orderListContainer = document.getElementById('orderListContainer');
+  const emptyMessage = document.getElementById('emptyMessage');
+  const staticLoadMoreBtn = document.getElementById('staticLoadMoreBtn');
+
+  // Lấy dữ liệu đơn hàng (Hãy chắc chắn key lưu ở trang ThanhToan là 'recentOrders')
+  const localData = localStorage.getItem('recentOrders');
+  let recentOrders = [];
+
+  if (localData) {
+    try {
+      recentOrders = JSON.parse(localData);
+    } catch (e) {
+      console.error("Lỗi đọc dữ liệu localStorage:", e);
+    }
+  }
+
+  // Nếu có đơn hàng trong hệ thống
+  if (recentOrders && recentOrders.length > 0) {
+    // Ẩn dòng thông báo trống đi
+    if (emptyMessage) emptyMessage.style.display = 'none';
+
+    // Chuỗi chứa HTML của các đơn hàng sẽ được tạo ra
+    let htmlContent = '';
+
+    recentOrders.forEach(order => {
+      // Thiết lập ảnh mặc định nếu đơn hàng không có ảnh
+      const imgUrl = order.image || 'images/oppo.png'; 
+      const price = order.price || '0đ';
+      const total = order.total || price; // Thành tiền
+
+      htmlContent += `
+        <div class="order-card cart-item">
+          <div class="order-body">
+            <div class="item-img-box">
+              <img src="${imgUrl}" alt="${order.name}">
+            </div>
+
+            <div class="item-info">
+              <div class="info-row">
+                <span class="info-label">Tên sản phẩm</span>
+                <span class="info-label">Giá cả</span>
+                <span class="info-label">Thành tiền</span>
+              </div>
+              <div class="info-values">
+                <h4 class="item-name">${order.name}</h4>
+                <span class="item-price">${price}</span>
+                <span class="item-total">${total} <small class="discount-note">(Đã áp dụng voucher)</small></span>
+              </div>
+              <div class="item-rating">4.9 ★</div>
+            </div>
+
+            <div class="order-actions">
+              <span class="status-badge status-waiting">Chờ Xác Nhận</span>
+              <button class="btn-action btn-secondary">Liên hệ người bán</button>
+              <button class="btn-action btn-danger">Hủy đơn Hàng</button>
+              <button class="btn-action btn-primary">Theo dõi đơn</button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    // Chèn chuỗi HTML đơn hàng vào phía trước nút "Xem thêm"
+    if (staticLoadMoreBtn) {
+      staticLoadMoreBtn.insertAdjacentHTML('beforebegin', htmlContent);
+    } else {
+      orderListContainer.innerHTML = htmlContent;
+    }
+  }
+
+
+  // ==========================================
+  // BƯỚC 2: XỬ LÝ HỦY ĐƠN HÀNG (GIỮ NGUYÊN LOGIC CỦA BẠN)
+  // ==========================================
+  const orderContainer = document.querySelector('.main-wrap') || document.body; 
+
+  orderContainer.addEventListener('click', function (e) {
+    if (e.target && (e.target.classList.contains('btn-danger') || e.target.textContent.trim() === 'Hủy đơn Hàng')) {
+      
+      if (!confirm("Bạn có chắc chắn muốn hủy đơn hàng này không?")) {
+        return;
+      }
+
+      const orderCard = e.target.closest('.cart-item');
+      if (!orderCard) return;
+
+      const productNameNode = orderCard.querySelector('.item-name');
+      if (!productNameNode) return;
+      const productName = productNameNode.textContent.trim();
+
+      // Cập nhật lại localStorage sau khi xóa
+      let currentRecentOrders = [];
+      const localDataUpdate = localStorage.getItem('recentOrders');
+      
+      if (localDataUpdate) {
+        currentRecentOrders = JSON.parse(localDataUpdate);
+        currentRecentOrders = currentRecentOrders.filter(item => item.name !== productName);
+        localStorage.setItem('recentOrders', JSON.stringify(currentRecentOrders));
+      }
+
+      // Xóa giao diện
+      orderCard.remove();
+      
+      // Nếu xóa hết sạch đơn hàng thì hiện lại thông báo trống
+      if (currentRecentOrders.length === 0) {
+        if (emptyMessage) {
+          emptyMessage.style.display = 'block';
+        } else {
+          orderListContainer.innerHTML = `<p style="text-align: center; font-weight: 600; padding: 20px;" id="emptyMessage">Chưa có đơn hàng nào được đặt.</p>`;
+        }
+      }
+
+      alert('Hủy đơn hàng thành công!');
+    }
+  });
+});
+  </script>
+</body>
+</html>

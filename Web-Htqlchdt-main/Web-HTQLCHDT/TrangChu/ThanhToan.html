@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTK - Thanh Toán</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="ThanhToan.css">
+</head>
+<body>
+ 
+<div class="header">
+  <a href="TrangChu.html" class="logo-box">
+    <img src="images/Rectangle_2.png" alt="">
+  </a>
+  <div class="search-wrap">
+    <input type="text" placeholder="Tìm kiếm">
+    <button onclick="window.location.href='search.html'"><i class="fas fa-search"></i></button>
+  </div>
+  <div class="header-icons">
+    <a href="GioHang.html" class="header-icon-item cart-link">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-badge" id="header-badge">0</span>
+      <span>Giỏ hàng</span>
+    </a>
+    <a href="DangNhap.html" class="header-icon-item">
+      <i class="fas fa-user"></i>
+      <span>Tài khoản</span>
+    </a>
+    <div class="header-icon-item">
+      <i class="fas fa-bars"></i>
+      <span>Menu</span>
+    </div>
+  </div>
+</div>
+ 
+<div class="main-wrap">
+ 
+  <div class="user-info-bar">
+    <div class="info-field name">Nguyễn Trọng Khiêm</div>
+    <div class="info-field">03561112300</div>
+    <div class="info-field">104 Nguyễn Trãi, Diên Khánh, Khánh Hòa</div>
+    <button class="btn-change-info">Thay đổi Thông Tin</button>
+  </div>
+ 
+  <div class="table-header">
+    <span>Sản phẩm</span>
+    <span>Đơn giá</span>
+    <span>Số lượng</span>
+    <span>Vận chuyển</span>
+    <span>Thành tiền</span>
+  </div>
+ 
+  <div id="checkout-list"></div>
+ 
+  <div class="voucher-row">
+    <span class="voucher-label">Voucher</span>
+    <span class="voucher-value" id="voucher-display">-0đ (5%)</span>
+  </div>
+ 
+  <div class="pay-summary-row">
+ 
+    <div class="payment-method-box">
+      <div class="pm-label">Phương thức thanh toán</div>
+      <div class="pm-card">
+        <div class="pm-bank-logo">
+          <img src="images/vcblogo.png" alt="VCB">
+        </div>
+        <div class="pm-name">Vietcombank</div>
+        <div class="pm-selected-text">Đã chọn<br>Thanh toán Bằng Tài Khoản VCB</div>
+      </div>
+    </div>
+ 
+    <div class="summary-box">
+      <div class="summary-title" id="summary-product-count">Tổng số tiền (0 sản phẩm):</div>
+ 
+      <div class="summary-row">
+        <span class="summary-row-label">Tổng tiền hàng</span>
+        <span class="summary-row-value" id="summary-subtotal">0đ</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Phí vận chuyển</span>
+        <span class="summary-row-value" id="summary-shipping">0đ</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Voucher</span>
+        <span class="summary-row-value highlight" id="summary-voucher">-0đ (5%)</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-total-label">Tổng thanh toán</span>
+        <span class="summary-row-value highlight" style="font-size:18px;" id="summary-total">0đ</span>
+      </div>
+    </div>
+  </div>
+ 
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 30px auto; width: fit-content;">
+    <button onclick="handlePayment()" class="btn-checkout" style="background: #D7EFFF; border: 2px solid #000; padding: 12px 60px; border-radius: 30px; font-weight: 700; cursor: pointer; font-size: 16px; width: 340px; text-align: center;">
+      Thanh Toán
+    </button>
+
+    <a href="TheoDoiDonHang.html" class="btn-checkout" style="background: #fff; border: 2px solid #000; padding: 12px 24px; border-radius: 30px; font-weight: 700; text-decoration: none; color: #000; display: inline-block; font-size: 15px; width: 340px; text-align: center;">
+      Theo dõi đơn hàng đã đặt
+    </a>
+  </div>
+</div>
+ 
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h6>GIỚI THIỆU</h6>
+      <a href="#">Giới thiệu về PTK</a>
+      <a href="#">Hệ thống cửa hàng</a>
+      <a href="#">Tuyển dụng</a>
+      <a href="#">Liên hệ, tuyển dụng</a>
+    </div>
+    <div class="footer-col">
+      <h6>CHÍNH SÁCH</h6>
+      <a href="#">Điều khoản & dịch vụ</a>
+      <a href="#">Chính sách bảo mật</a>
+      <a href="#">Quy định bảo hành</a>
+      <a href="#">Hình thức thanh toán</a>
+    </div>
+    <div class="footer-col">
+      <h6>TÀI KHOẢN</h6>
+      <a href="#">Thay đổi thông tin</a>
+      <a href="#">Lấy lại mật khẩu</a>
+      <a href="#">Lịch sử mua hàng</a>
+      <a href="#">Quản lý giỏ hàng</a>
+    </div>
+    <div class="footer-col">
+      <h6>HỖ TRỢ</h6>
+      <a href="#">Hướng dẫn mua hàng</a>
+      <a href="#">Khuyến mãi</a>
+      <a href="#">Giao nhận hàng hóa</a>
+      <a href="#">Khiếu nại bồi thường</a>
+    </div>
+    <div class="footer-logo-box mt-3">
+      <img src="images/Rectangle_2.png" alt="">
+    </div>
+  </div>
+</footer>
+ <script>
+  // Khởi tạo một biến toàn cục để hứng dữ liệu giỏ hàng thật
+  let currentCheckoutItems = [];
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Lấy dữ liệu từ giỏ hàng truyền sang
+    const cartData = localStorage.getItem('checkoutCart');
+    const checkoutList = document.getElementById('checkout-list');
+    
+    if (!cartData || JSON.parse(cartData).length === 0) {
+      checkoutList.innerHTML = `<div class="text-center p-5 bg-white rounded-3">Không có sản phẩm nào được chọn để thanh toán. <a href="GioHang.html">Quay lại giỏ hàng</a></div>`;
+      return;
+    }
+
+    // Đổ mảng dữ liệu vào biến toàn cục để dùng lại khi bấm thanh toán
+    currentCheckoutItems = JSON.parse(cartData);
+    
+    let totalItemsCount = 0;
+    let totalProductPrice = 0;
+    const shippingFeePerItem = 40000; 
+
+    let htmlContent = '';
+    
+    currentCheckoutItems.forEach(item => {
+      const subtotal = item.price * item.qty;
+      const itemShippingFee = shippingFeePerItem; 
+      const itemFinalTotal = subtotal + itemShippingFee;
+
+      totalItemsCount += item.qty;
+      totalProductPrice += subtotal;
+
+      // SỬA LỖI TẠI ĐÂY: Kiểm tra cả thuộc tính .image và .img từ dữ liệu gốc truyền sang
+      const imgPath = item.image || item.img || 'images/iphone.png';
+
+      htmlContent += `
+        <div class="cart-item">
+          <div class="item-left">
+            <div class="item-img">
+              <img src="${imgPath}" alt="${item.name}" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="img-placeholder" style="display:none; padding: 5px; font-size: 11px;">Ảnh SP</span>
+            </div>
+            <div class="item-name">${item.name}</div>
+          </div>
+          <div class="col-center price-red">${item.price.toLocaleString('vi-VN')}đ</div>
+          <div class="col-center">${item.qty}</div>
+          <div class="col-center price-red">${itemShippingFee.toLocaleString('vi-VN')}đ</div>
+          <div class="col-center price-red">${itemFinalTotal.toLocaleString('vi-VN')}đ</div>
+        </div>
+      `;
+    });
+
+    checkoutList.innerHTML = htmlContent;
+
+    const totalShippingFee = currentCheckoutItems.length * shippingFeePerItem; 
+    const voucherDiscount = Math.round(totalProductPrice * 0.05);
+    const finalPayment = (totalProductPrice + totalShippingFee) - voucherDiscount;
+
+    document.getElementById('header-badge').textContent = currentCheckoutItems.length;
+    document.getElementById('summary-product-count').textContent = `Tổng số tiền (${totalItemsCount} sản phẩm):`;
+    document.getElementById('summary-subtotal').textContent = totalProductPrice.toLocaleString('vi-VN') + 'đ';
+    document.getElementById('summary-shipping').textContent = totalShippingFee.toLocaleString('vi-VN') + 'đ';
+    
+    const voucherText = `-${voucherDiscount.toLocaleString('vi-VN')}đ (5%)`;
+    document.getElementById('voucher-display').textContent = voucherText;
+    document.getElementById('summary-voucher').textContent = voucherText;
+    
+    document.getElementById('summary-total').textContent = finalPayment.toLocaleString('vi-VN') + 'đ';
+  });
+
+  /**
+   * Hàm xử lý thanh toán và đồng bộ ảnh chuẩn xác sang TheoDoiDonHang
+   */
+  function handlePayment() {
+    if (currentCheckoutItems.length === 0) {
+      alert("Không có thông tin sản phẩm để tiến hành thanh toán!");
+      return;
+    }
+
+    let currentRecentOrders = [];
+    const localData = localStorage.getItem('recentOrders');
+    if (localData) {
+      try {
+        currentRecentOrders = JSON.parse(localData);
+      } catch (e) {
+        currentRecentOrders = [];
+      }
+    }
+
+    currentCheckoutItems.forEach(item => {
+      const subtotal = item.price * item.qty;
+      const itemShippingFee = 40000;
+      const itemDiscount = Math.round(subtotal * 0.05);
+      const itemFinalTotalValue = (subtotal + itemShippingFee) - itemDiscount;
+
+      // SỬA LỖI TẠI ĐÂY: Bảo toàn chính xác ảnh động của từng item khi tạo đơn hàng mới
+      const finalImg = item.image || item.img || 'images/iphone.png';
+
+      const structuredOrder = {
+        id: "DH_" + Date.now() + "_" + Math.floor(Math.random() * 1000), 
+        name: item.name,
+        price: item.price.toLocaleString('vi-VN') + 'đ',
+        total: itemFinalTotalValue.toLocaleString('vi-VN') + 'đ',
+        image: finalImg, 
+        status: "Chờ Xác Nhận",
+        rating: "4.9 ★"
+      };
+
+      currentRecentOrders.unshift(structuredOrder);
+    });
+
+    localStorage.setItem('recentOrders', JSON.stringify(currentRecentOrders));
+    localStorage.removeItem('checkoutCart');
+
+    alert('Thanh toán thành công!');
+    window.location.href = 'TheoDoiDonHang.html';
+  }
+</script>
+</body>
+</html>

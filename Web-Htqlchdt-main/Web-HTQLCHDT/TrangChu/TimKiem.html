@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTK - Tìm Kiếm</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="TimKiem.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <a href="TrangChu.html" class="logo-box">
+    <img src="images/Rectangle_2.png" alt="">
+  </a>
+  <div class="search-wrap">
+    <input type="text" placeholder="Tìm kiếm" value="Sản phẩm">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  <div class="header-icons">
+    <a href="GioHang.html" class="header-icon-item cart-link">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-badge">2</span>
+      <span>Giỏ hàng</span>
+    </a>
+    <a href="DangNhap.html" class="header-icon-item">
+      <i class="fas fa-user"></i>
+      <span>Tài khoản</span>
+    </a>
+    <div class="header-icon-item">
+      <i class="fas fa-bars"></i>
+      <span>Menu</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-title">
+        <span class="filter-icon">BỘ LỌC</span> TÌM KIẾM
+      </div>
+
+      <div class="filter-label">Khoảng giá</div>
+      <div class="filter-option"><label><input type="radio" name="price" checked> Dưới 200.000đ</label></div>
+      <div class="filter-option"><label><input type="radio" name="price"> Từ 250.000đ → 500.000đ</label></div>
+      <div class="filter-option"><label><input type="radio" name="price"> Từ 500.000đ → 1.000.000đ</label></div>
+      <div class="filter-option"><label><input type="radio" name="price"> Từ 1.000.000đ → 2.000.000đ</label></div>
+      <div class="filter-option"><label><input type="radio" name="price"> Từ 2.000.000đ trở lên</label></div>
+
+      <hr style="border-color:#b0d8f5; margin: 12px 0;">
+
+      <div class="filter-label">Đánh giá</div>
+      <div class="star-row">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="star-row">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+      </div>
+      <div class="star-row">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span>
+      </div>
+      <div class="star-row">
+        <span class="star">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span>
+      </div>
+
+      <hr style="border-color:#b0d8f5; margin: 12px 0;">
+
+      <div class="filter-label">Nơi bán</div>
+      <div class="location-tags">
+        <span class="loc-tag active">Nha Trang</span>
+        <span class="loc-tag">Cam Lâm</span>
+        <span class="loc-tag">Diên Khánh</span>
+        <span class="loc-tag">Ninh Hòa</span>
+        <span class="loc-tag">Khánh Vĩnh</span>
+        <span class="loc-tag">Khánh Sơn</span>
+      </div>
+
+      <div style="margin-top: 14px;">
+        <button class="btn-apply">ÁP DỤNG</button>
+        <button class="btn-reset">THIẾT LẬP LẠI</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content-area">
+    <div class="result-header">
+      <span class="compass-icon">🧭</span>
+      Kết quả tìm kiếm cho từ khoá " <strong>Sản phẩm</strong> "
+    </div>
+
+    <div class="product-grid">
+      <a href="GioHang.html" class="product-card">
+        <div class="product-img-box">
+          <img src="images/oppo.png" alt="">
+        </div>
+        <div class="price-row">
+          <span class="price-old">100.000</span>
+          <span class="price-new">150.000</span>
+        </div>
+        <div class="product-name">Dây sạc nhanh</div>
+      </a>
+      <a href="GioHang.html" class="product-card">
+        <div class="product-img-box">
+        
+          <img src="images/pinkphone.png" alt="">
+        </div>
+        <div class="price-row">
+          <span class="price-old">100.000</span>
+          <span class="price-new">150.000</span>
+        </div>
+        <div class="product-name">Dây sạc nhanh</div>
+      </a>
+      <a href="GioHang.html" class="product-card">
+        <div class="product-img-box">
+          <img src="images/daysac.png" alt="">
+        </div>
+        <div class="price-row">
+          <span class="price-old">100.000</span>
+          <span class="price-new">150.000</span>
+        </div>
+        <div class="product-name">Dây sạc nhanh</div>
+      </a>
+      <a href="GioHang.html" class="product-card">
+        <div class="product-img-box">
+          <img src="images/iphone.png" alt="">
+        </div>
+        <div class="price-row">
+          <span class="price-old">100.000</span>
+          <span class="price-new">150.000</span>
+        </div>
+        <div class="product-name">Dây sạc nhanh</div>
+      </a>
+      <a href="GioHang.html" class="product-card">
+        <div class="product-img-box">
+          <img src="images/daysac.png" alt="">
+        </div>
+        <div class="price-row">
+          <span class="price-old">100.000</span>
+          <span class="price-new">150.000</span>
+        </div>
+        <div class="product-name">Dây sạc nhanh</div>
+      </a>
+      <a href="GioHang.html" class="product-card">
+        <div class="product-img-box">
+          <img src="images/daysac1.png" alt="">
+        </div>
+        <div class="price-row">
+          <span class="price-old">100.000</span>
+          <span class="price-new">150.000</span>
+        </div>
+        <div class="product-name">Dây sạc nhanh</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h6>GIỚI THIỆU</h6>
+      <a href="#">Giới thiệu về PTK</a>
+      <a href="#">Hệ thống cửa hàng</a>
+      <a href="#">Tuyển dụng</a>
+      <a href="#">Liên hệ, tuyển dụng</a>
+    </div>
+    <div class="footer-col">
+      <h6>CHÍNH SÁCH</h6>
+      <a href="#">Điều khoản & dịch vụ</a>
+      <a href="#">Chính sách bảo mật</a>
+      <a href="#">Quy định bảo hành</a>
+      <a href="#">Hình thức thanh toán</a>
+    </div>
+    <div class="footer-col">
+      <h6>TÀI KHOẢN</h6>
+      <a href="#">Thay đổi thông tin</a>
+      <a href="#">Lấy lại mật khẩu</a>
+      <a href="#">Lịch sử mua hàng</a>
+      <a href="#">Quản lý giỏ hàng</a>
+    </div>
+    <div class="footer-col">
+      <h6>HỖ TRỢ</h6>
+      <a href="#">Hướng dẫn mua hàng</a>
+      <a href="#">Khuyến mãi</a>
+      <a href="#">Giao nhận hàng hóa</a>
+      <a href="#">Khiếu nại bồi thường</a>
+    </div>
+      <div class="footer-logo-box mt-3"><img src="images/Rectangle_2.png" alt=""></div>
+  </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
