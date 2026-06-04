@@ -95,6 +95,8 @@
       <button class="btn-cancel" onclick="cancelItem(this)">Hủy</button>
     </div>
   </div>
+
+  <div id="dynamicCartItems"></div>
  
   <a href="TimKiem.html" class="btn-xemthem text-decoration-none">Xem thêm</a>
  
@@ -153,11 +155,69 @@
     <img src="images/Rectangle_2.png" alt="">
   </div>
   </div>
-
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  // TỰ ĐỘNG ĐÓN VÀ HIỂN THỊ SẢN PHẨM MỚI TỪ TRANG TIMKIEM
+  document.addEventListener("DOMContentLoaded", function () {
+    const newItemRaw = localStorage.getItem('newCartItem');
+
+    if (newItemRaw) {
+      const item = JSON.parse(newItemRaw);
+      const dynamicContainer = document.getElementById('dynamicCartItems');
+
+      if (dynamicContainer) {
+        // Tạo cấu trúc thẻ giống hệt các sản phẩm có sẵn của bạn
+        const newCartItem = document.createElement('div');
+        newCartItem.className = 'cart-item';
+        
+        newCartItem.innerHTML = `
+          <div class="cart-checkbox"><i class="fas fa-check"></i></div>
+          
+          <div class="item-left">
+            <div class="item-img">
+              <img src="${item.img}" alt="${item.name}">
+            </div>
+            <div class="item-name">${item.name}</div>
+          </div>
+
+          <div class="item-price">${item.price}</div>
+
+          <div class="qty-column">
+            <span class="qty-label">Số Lượng</span>
+            <div class="qty-control">
+              <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+              <div class="qty-num">1</div>
+              <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+            </div>
+          </div>
+
+          <div class="action-column">
+            <button class="btn-cancel" onclick="cancelItem(this)">Hủy</button>
+          </div>
+        `;
+
+        // Thêm tính năng click chọn checkbox cho sản phẩm mới sinh ra này
+        const checkbox = newCartItem.querySelector('.cart-checkbox');
+        checkbox.addEventListener('click', (e) => {
+          e.stopPropagation();
+          newCartItem.classList.toggle('selected');
+          updateTotal();
+        });
+
+        // Đẩy sản phẩm vào vùng chứa
+        dynamicContainer.appendChild(newCartItem);
+      }
+
+      // Xóa bộ nhớ tạm sau khi hiển thị để tránh bị lặp lại khi F5 trang
+      localStorage.removeItem('newCartItem');
+    }
+
+    // Gọi lại tính toán lần đầu để cập nhật giao diện
+    updateTotal();
+  });
+
   // 1. Logic Tăng / Giảm số lượng (+ / -) -> Min là 0
   function changeQty(btn, delta) {
     const qtyNumDiv = btn.parentElement.querySelector('.qty-num');
@@ -205,14 +265,16 @@
     updateTotal();
   });
 
-  // Tích chọn độc lập hoặc hủy chọn trực tiếp bằng cách click vào ô vuông checkbox
+  // Tích chọn độc lập hoặc hủy chọn trực tiếp bằng cách click vào ô vuông checkbox cho các item tĩnh ban đầu
   document.querySelectorAll('.cart-item').forEach(item => {
     const checkbox = item.querySelector('.cart-checkbox');
-    checkbox.addEventListener('click', (e) => {
-      e.stopPropagation(); // Tránh lỗi click chồng chéo
-      item.classList.toggle('selected');
-      updateTotal();
-    });
+    if (checkbox) {
+      checkbox.addEventListener('click', (e) => {
+        e.stopPropagation(); // Tránh lỗi click chồng chéo
+        item.classList.toggle('selected');
+        updateTotal();
+      });
+    }
   });
 
   // 5. Tính toán tổng số tiền và số lượng thực tế
@@ -237,46 +299,38 @@
     document.getElementById('header-cart-badge').textContent = totalCount;
   }
 
-  // Chạy cập nhật lần đầu tiên khi tải trang
-  updateTotal();
   function proceedToCheckout() {
-  const selectedItems = [];
-  
-  // Lặp qua tất cả các item trong giỏ hàng
-  document.querySelectorAll('.cart-item').forEach(item => {
-    // Nếu item được tích chọn và số lượng lớn hơn 0
-    if (item.classList.contains('selected')) {
-      const name = item.querySelector('.item-name').textContent;
-      const qty = parseInt(item.querySelector('.qty-num').textContent);
-      const priceText = item.querySelector('.item-price').textContent;
-      const price = parseInt(priceText.replace(/\./g, '').replace('đ', ''));
-      
-      // LẤY CHÍNH XÁC ĐƯỜNG DẪN ẢNH ĐỘNG CỦA TỪNG KHỐI SẢN PHẨM
-      const imgElement = item.querySelector('.item-img img');
-      const image = imgElement ? imgElement.getAttribute('src') : 'images/iphone.png';
-      
-      if (qty > 0) {
-        selectedItems.push({
-          name: name,
-          qty: qty,
-          price: price,
-          image: image // Thêm thuộc tính này để truyền ảnh động đi
-        });
+    const selectedItems = [];
+    
+    document.querySelectorAll('.cart-item').forEach(item => {
+      if (item.classList.contains('selected')) {
+        const name = item.querySelector('.item-name').textContent;
+        const qty = parseInt(item.querySelector('.qty-num').textContent);
+        const priceText = item.querySelector('.item-price').textContent;
+        const price = parseInt(priceText.replace(/\./g, '').replace('đ', ''));
+        
+        const imgElement = item.querySelector('.item-img img');
+        const image = imgElement ? imgElement.getAttribute('src') : 'images/iphone.png';
+        
+        if (qty > 0) {
+          selectedItems.push({
+            name: name,
+            qty: qty,
+            price: price,
+            image: image
+          });
+        }
       }
+    });
+
+    if (selectedItems.length === 0) {
+      alert('Vui lòng chọn ít nhất 1 sản phẩm với số lượng lớn hơn 0 để thanh toán!');
+      return;
     }
-  });
 
-  if (selectedItems.length === 0) {
-    alert('Vui lòng chọn ít nhất 1 sản phẩm với số lượng lớn hơn 0 để thanh toán!');
-    return;
+    localStorage.setItem('checkoutCart', JSON.stringify(selectedItems));
+    window.location.href = 'ThanhToan.html'; 
   }
-
-  // Lưu mảng sản phẩm đã chọn vào localStorage kèm đầy đủ ảnh
-  localStorage.setItem('checkoutCart', JSON.stringify(selectedItems));
-  
-  // Chuyển hướng sang trang thanh toán
-  window.location.href = 'ThanhToan.html'; 
-}
 </script>
 </body>
 </html>

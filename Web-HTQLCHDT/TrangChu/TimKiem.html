@@ -7,10 +7,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="TimKiem.css">
+
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <a href="TrangChu.html" class="logo-box">
     <img src="images/Rectangle_2.png" alt="">
@@ -36,10 +36,8 @@
   </div>
 </div>
 
-<!-- MAIN -->
 <div class="main-wrap">
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="sidebar-box">
       <div class="sidebar-title">
@@ -88,7 +86,6 @@
     </div>
   </div>
 
-  <!-- CONTENT -->
   <div class="content-area">
     <div class="result-header">
       <span class="compass-icon">🧭</span>
@@ -96,72 +93,191 @@
     </div>
 
     <div class="product-grid">
-      <a href="GioHang.html" class="product-card">
-        <div class="product-img-box">
-          <img src="images/oppo.png" alt="">
+      
+      <div class="product-card">
+        <div class="product-img-container">
+          <div class="product-img-box" data-bs-toggle="collapse" data-bs-target="#infoProd1" role="button">
+            <img src="images/oppo.png" alt="Oppo">
+          </div>
+          <button class="btn-add-cart" 
+                  data-name="Điện thoại Oppo A78" 
+                  data-price="150.000đ" 
+                  data-img="images/oppo.png" 
+                  onclick="addToCart(this)">+</button>
         </div>
-        <div class="price-row">
+        <div class="price-row mt-2">
           <span class="price-old">100.000</span>
           <span class="price-new">150.000</span>
         </div>
-        <div class="product-name">Dây sạc nhanh</div>
-      </a>
-      <a href="GioHang.html" class="product-card">
-        <div class="product-img-box">
+        <div class="product-name">Điện thoại Oppo A78</div>
         
-          <img src="images/pinkphone.png" alt="">
+        <div class="collapse mt-2 w-100" id="infoProd1">
+          <div class="p-2 border product-details-box">
+            <strong>Thông tin kỹ thuật:</strong><br>
+            • Nơi sản xuất: Việt Nam<br>
+            • Dung lượng pin: 5000 mAh<br>
+            • Bộ nhớ RAM: 8GB mượt mà<br>
+            • Bộ nhớ trong: 256GB dữ liệu<br>
+            • Tình trạng: Hàng mới chính hãng<br>
+            • Bảo hành: 12 tháng tại PTK
+          </div>
         </div>
-        <div class="price-row">
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-container">
+          <div class="product-img-box" data-bs-toggle="collapse" data-bs-target="#infoProd2" role="button">
+            <img src="images/pinkphone.png" alt="Pink Phone">
+          </div>
+          <button class="btn-add-cart" 
+                  data-name="Điện thoại Pink Phone Cute" 
+                  data-price="150.000đ" 
+                  data-img="images/pinkphone.png" 
+                  onclick="addToCart(this)">+</button>
+        </div>
+        <div class="price-row mt-2">
           <span class="price-old">100.000</span>
           <span class="price-new">150.000</span>
         </div>
-        <div class="product-name">Dây sạc nhanh</div>
-      </a>
-      <a href="GioHang.html" class="product-card">
-        <div class="product-img-box">
-          <img src="images/daysac.png" alt="">
+        <div class="product-name">Điện thoại Pink Phone Cute</div>
+        
+        <div class="collapse mt-2 w-100" id="infoProd2">
+          <div class="p-2 border product-details-box">
+            <strong>Thông tin kỹ thuật:</strong><br>
+            • Phiên bản: Giới hạn màu hồng<br>
+            • Nơi thiết kế: California, USA<br>
+            • Camera sau: Cụm 3 mắt sắc nét<br>
+            • Công nghệ màn hình: OLED 120Hz<br>
+            • Phụ kiện kèm: Cáp sạc chống rối<br>
+            • Ưu đãi: Tặng kèm ốp lưng chính hãng
+          </div>
         </div>
-        <div class="price-row">
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-container">
+          <div class="product-img-box" data-bs-toggle="collapse" data-bs-target="#infoProd3" role="button">
+            <img src="images/daysac.png" alt="Dây sạc">
+          </div>
+          <button class="btn-add-cart" 
+                  data-name="Dây sạc nhanh Type-C" 
+                  data-price="150.000đ" 
+                  data-img="images/daysac.png" 
+                  onclick="addToCart(this)">+</button>
+        </div>
+        <div class="price-row mt-2">
           <span class="price-old">100.000</span>
           <span class="price-new">150.000</span>
         </div>
-        <div class="product-name">Dây sạc nhanh</div>
-      </a>
-      <a href="GioHang.html" class="product-card">
-        <div class="product-img-box">
-          <img src="images/iphone.png" alt="">
+        <div class="product-name">Dây sạc nhanh Type-C</div>
+        
+        <div class="collapse mt-2 w-100" id="infoProd3">
+          <div class="p-2 border product-details-box">
+            <strong>Thông tin kỹ thuật:</strong><br>
+            • Loại cáp: USB-C sang Lightning/Type-C<br>
+            • Chiều dài dây sạc: 1.2 Mét chống gãy<br>
+            • Công suất truyền tải: Sạc siêu nhanh 65W<br>
+            • Chất liệu lõi: Đồng nguyên chất 100%<br>
+            • Lớp vỏ bọc: Dù dệt sợi nylon siêu bền<br>
+            • Kiểm định an toàn: Chống cháy nổ dòng điện
+          </div>
         </div>
-        <div class="price-row">
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-container">
+          <div class="product-img-box" data-bs-toggle="collapse" data-bs-target="#infoProd4" role="button">
+            <img src="images/iphone.png" alt="iPhone">
+          </div>
+          <button class="btn-add-cart" 
+                  data-name="iPhone 15 Pro cao cấp" 
+                  data-price="150.000đ" 
+                  data-img="images/iphone.png" 
+                  onclick="addToCart(this)">+</button>
+        </div>
+        <div class="price-row mt-2">
           <span class="price-old">100.000</span>
           <span class="price-new">150.000</span>
         </div>
-        <div class="product-name">Dây sạc nhanh</div>
-      </a>
-      <a href="GioHang.html" class="product-card">
-        <div class="product-img-box">
-          <img src="images/daysac.png" alt="">
+        <div class="product-name">iPhone 15 Pro cao cấp</div>
+        
+        <div class="collapse mt-2 w-100" id="infoProd4">
+          <div class="p-2 border product-details-box">
+            <strong>Thông tin kỹ thuật:</strong><br>
+            • Chipset xử lý: Apple A17 Pro siêu mạnh<br>
+            • Chất liệu vỏ: Khung viền Titanium cao cấp<br>
+            • Cổng kết nối: Chuẩn Type-C thế hệ mới<br>
+            • Dung lượng: Phiên bản cơ sở 128GB<br>
+            • Xuất xứ sản phẩm: Nhập khẩu chính ngạch<br>
+            • Chính sách: Lỗi 1 đổi 1 trong 30 ngày đầu
+          </div>
         </div>
-        <div class="price-row">
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-container">
+          <div class="product-img-box" data-bs-toggle="collapse" data-bs-target="#infoProd5" role="button">
+            <img src="images/daysac.png" alt="Dây sạc 2">
+          </div>
+          <button class="btn-add-cart" 
+                  data-name="Dây sạc dù siêu bền PTK" 
+                  data-price="150.000đ" 
+                  data-img="images/daysac.png" 
+                  onclick="addToCart(this)">+</button>
+        </div>
+        <div class="price-row mt-2">
           <span class="price-old">100.000</span>
           <span class="price-new">150.000</span>
         </div>
-        <div class="product-name">Dây sạc nhanh</div>
-      </a>
-      <a href="GioHang.html" class="product-card">
-        <div class="product-img-box">
-          <img src="images/daysac1.png" alt="">
+        <div class="product-name">Dây sạc dù siêu bền PTK</div>
+        
+        <div class="collapse mt-2 w-100" id="infoProd5">
+          <div class="p-2 border product-details-box">
+            <strong>Thông tin kỹ thuật:</strong><br>
+            • Thương hiệu độc quyền: Thiết bị PTK<br>
+            • Tính năng thông minh: Tự ngắt khi sạc đầy<br>
+            • Độ bền uốn cong: Lên tới hơn 15.000 lần<br>
+            • Đèn báo trạng thái: Led tín hiệu thông minh<br>
+            • Tương thích thiết bị: Đa nền tảng Android/iOS<br>
+            • Cam kết chất lượng: Đổi trả tự do nếu lỗi nguồn
+          </div>
         </div>
-        <div class="price-row">
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-container">
+          <div class="product-img-box" data-bs-toggle="collapse" data-bs-target="#infoProd6" role="button">
+            <img src="images/daysac1.png" alt="Dây sạc 3">
+          </div>
+          <button class="btn-add-cart" 
+                  data-name="Cáp sạc đa năng 3 đầu" 
+                  data-price="150.000đ" 
+                  data-img="images/daysac1.png" 
+                  onclick="addToCart(this)">+</button>
+        </div>
+        <div class="price-row mt-2">
           <span class="price-old">100.000</span>
           <span class="price-new">150.000</span>
         </div>
-        <div class="product-name">Dây sạc nhanh</div>
-      </a>
+        <div class="product-name">Cáp sạc đa năng 3 đầu</div>
+        
+        <div class="collapse mt-2 w-100" id="infoProd6">
+          <div class="p-2 border product-details-box">
+            <strong>Thông tin kỹ thuật:</strong><br>
+            • Kết cấu đầu ra: Micro USB, Type-C, Lightning<br>
+            • Tiện ích: Sạc cùng lúc được cả 3 máy điện thoại<br>
+            • Dòng điện tối đa hỗ trợ: 3.5A phân phối đều<br>
+            • Chiều dài tổng thể: Tiêu chuẩn dài 1.5 Mét tiện lợi<br>
+            • Nơi sản xuất lắp ráp: Gia công tại Đài Loan<br>
+            • Phân phối độc quyền: Đại lý bán lẻ PTK Store
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
@@ -192,11 +308,28 @@
       <a href="#">Giao nhận hàng hóa</a>
       <a href="#">Khiếu nại bồi thường</a>
     </div>
-      <div class="footer-logo-box mt-3"><img src="images/Rectangle_2.png" alt=""></div>
+    <div class="footer-logo-box mt-3"><img src="images/Rectangle_2.png" alt=""></div>
   </div>
-
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function addToCart(button) {
+    // 1. Thu thập dữ liệu của sản phẩm vừa được click
+    const name = button.getAttribute('data-name');
+    const price = button.getAttribute('data-price');
+    const img = button.getAttribute('data-img');
+
+    // 2. Gom thành một object
+    const product = { name, price, img };
+
+    // 3. Đóng gói lưu vào localStorage
+    localStorage.setItem('newCartItem', JSON.stringify(product));
+
+    // 4. Chuyển hướng trình duyệt sang trang giỏ hàng
+    window.location.href = "GioHang.html";
+  }
+</script>
 </body>
 </html>

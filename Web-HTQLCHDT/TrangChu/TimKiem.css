@@ -151,6 +151,37 @@
     .price-new { color: var(--red); font-size: 20px; font-weight: 600; }
     .product-name { font-size: 20px; font-weight: 500; }
 
+    /* CSS tinh chỉnh định vị để nút dấu cộng ôm sát vào góc trên bên phải của khung ảnh */
+    .product-img-container {
+      position: relative;
+      width: 100%;
+      display: inline-block;
+    }
+    .btn-add-cart {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 30px;
+      height: 30px;
+      background-color: #ff4d4d;
+      color: white !important;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    .btn-add-cart:hover {
+      background-color: #e60000;
+      transform: scale(1.1);
+    }
+
 footer {
       background: var(--blue-light);
       padding: 30px 20px 20px 50px;
